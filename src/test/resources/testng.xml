@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<!--<suite name="All Name">-->
-<!--    <test name="TestNg">-->
-<!--        <packages>-->
-<!--            <package name="testNg"/>-->
-<!--        </packages>-->
-<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
-<!--</suite> &lt;!&ndash; Suite &ndash;&gt;-->
-
 <suite name="All Name">
     <test name="TestNg">
-        <classes>
-            <class name="cucumber.CucumberTestRunner"/>
-        </classes>
+        <packages>
+            <package name="testNg"/>
+        </packages>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
+
+<!--<suite name="All Name">-->
+<!--    <test name="TestNg">-->
+<!--        <classes>-->
+<!--            <class name="cucumber.CucumberTestRunner"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+<!--</suite> &lt;!&ndash; Suite &ndash;&gt;-->
