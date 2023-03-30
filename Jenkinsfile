@@ -32,7 +32,7 @@ pipeline {
                     params.BROWSER.split(" ").each{ browser ->
                         String br = browser
                         tests[br] = {
-                            bat "gradlew test -Dbrowser=${br} -Dorg.gradle.project.buildDir=\"/build-.${br}\""
+                            bat "gradle test -Dbrowser=${br} -Dorg.gradle.project.buildDir=\"/build-.${br}\""
                         }
                     }
                     parallel tests
