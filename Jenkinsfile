@@ -7,7 +7,7 @@ pipeline {
         extendedChoice(
                 name: 'BROWSER',
                 value: 'chrome,firefox',
-                multiSelectDelimeter: ' ',
+                multiSelectDelimiter: ' ',
                 description: 'Pls select browser to run tests.',
                 type: 'PT_MULTI_SELECT',
                 visibleItemCount: 5
