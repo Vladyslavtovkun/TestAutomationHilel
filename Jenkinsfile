@@ -10,6 +10,7 @@ pipeline {
                 multiSelectDelimiter: ' ',
                 description: 'Select test browser',
                 type: 'PT_MULTI_SELECT',
+                visibleItemCount: 5
         )
     }
 
