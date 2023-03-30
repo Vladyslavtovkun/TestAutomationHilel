@@ -6,7 +6,7 @@ pipeline {
         string(name: 'BUILD_NAME', defaultValue: '', description: 'Enter build name')
         extendedChoice(
                 name: 'BROWSER',
-                value: 'chrome, firefox',
+                value: 'chrome,firefox',
                 multiSelectDelimeter: ' ',
                 description: 'Pls select browser to run tests.',
                 type: 'PT_MULTI_SELECT',
