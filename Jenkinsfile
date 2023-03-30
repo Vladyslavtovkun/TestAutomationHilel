@@ -10,7 +10,8 @@ pipeline {
                 multiSelectDelimeter: ' ',
                 description: 'Pls select browser to run tests.',
                 type: 'PT_MULTI_SELECT',
-                descriptionGroovyScript: valueNamesScript
+                descriptionGroovyScript: valueNamesScript,
+                visibleItemCount: 5
         )
     }
 
@@ -18,7 +19,9 @@ pipeline {
         stage("Add build name") {
             when {expression {!params.BROWSER.isEmpty()}}
             steps {
-               currentBuild.displayName = params.BUILD_NAME
+               script {
+                   currentBuild.displayName = params.BUILD_NAME
+               }
             }
         }
 
@@ -32,7 +35,7 @@ pipeline {
         stage("Run test") {
             when {expression {!params.BROWSER.isEmpty()}}
             steps {
-                scripts {
+                script {
                     Map tests = [:]
                     params.BROWSER.split(" ").each{ browser ->
                         String br = browser
