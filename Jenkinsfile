@@ -27,7 +27,7 @@ pipeline {
         stage("Start container") {
             when{expression{!params.BROWSER.isEmpty()}}
             steps{
-               bat "docker-compose up -D selenium-hub ${params.BROWSER}"
+               bat "docker-compose up -d selenium-hub ${params.BROWSER}"
             }
         }
 
