@@ -1,5 +1,7 @@
 pipeline {
 
+    agent any
+
     parameters {
         string(name: 'BUILD_NAME', defaultValue: '', description: 'Enter build name')
         extendedChoice(
@@ -14,18 +16,21 @@ pipeline {
 
     stages {
         stage("Add build name") {
+            when {expression {!params.BROWSER.isEmpty()}}
             steps {
                currentBuild.displayName = params.BUILD_NAME
             }
         }
 
         stage("Start container") {
+            when {expression {!params.BROWSER.isEmpty()}}
             steps {
                 bat "docker-compose up -d selenium-hub ${params.BROWSER}"
             }
         }
 
-        stage("Start container") {
+        stage("Run test") {
+            when {expression {!params.BROWSER.isEmpty()}}
             steps {
                 scripts {
                     Map tests = [:]
