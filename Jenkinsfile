@@ -10,7 +10,6 @@ pipeline {
                 multiSelectDelimeter: ' ',
                 description: 'Pls select browser to run tests.',
                 type: 'PT_MULTI_SELECT',
-                descriptionGroovyScript: valueNamesScript,
                 visibleItemCount: 5
         )
     }
