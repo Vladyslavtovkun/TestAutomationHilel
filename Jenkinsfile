@@ -43,7 +43,7 @@ pipeline {
 
     post{
         always{
-            bat "docker-compose down -d"
+            bat "docker-compose down"
             archiveArtifacts(artifacts: "build*/**")
 
             allure([
