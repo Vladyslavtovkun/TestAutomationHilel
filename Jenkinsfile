@@ -6,10 +6,11 @@ pipeline {
         string(name: 'BUILD_NAME', defaultValue: '', description: 'Enter build name')
         extendedChoice(
                 name: 'BROWSER',
-                defaultValue: 'chrome,firefox',
+                defaultValue: 'chrome',
                 multiSelectDelimiter: ',',
                 description: 'Select test browser',
                 type: 'PT_MULTI_SELECT',
+                value: 'chrome,firefox',
                 visibleItemCount: 5
         )
     }
