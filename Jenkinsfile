@@ -18,7 +18,9 @@ pipeline {
         stage("Add build name") {
             when{expression{!params.BROWSER.isEmpty()}}
             steps{
-                currentBuild.displayName=params.BUILD_NAME
+                script{
+                    currentBuild.displayName=params.BUILD_NAME
+                }
             }
         }
 
