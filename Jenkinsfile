@@ -9,7 +9,7 @@ pipeline {
 
     stages {
         stage("Add build name") {
-            when {expression {!params.BROWSER.isEmpty()}}
+            when {expression {params.BROWSER != null}}
             steps {
                script {
                    currentBuild.displayName = params.BUILD_NAME
@@ -18,14 +18,14 @@ pipeline {
         }
 
         stage("Start container") {
-            when {expression {!params.BROWSER.isEmpty()}}
+            when {expression {params.BROWSER != null}}
             steps {
                 bat "docker-compose up -d selenium-hub ${params.BROWSER}"
             }
         }
 
         stage("Run test") {
-            when {expression {!params.BROWSER.isEmpty()}}
+            when {expression {params.BROWSER != null}}
             steps {
                 script {
                     Map tests = [:]
