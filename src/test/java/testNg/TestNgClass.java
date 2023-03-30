@@ -1,5 +1,6 @@
 package testNg;
 
+import com.codeborne.selenide.WebDriverRunner;
 import com.hillel.core.data.DataProviderMethods;
 import com.hillel.listeners.RetryListenerExample;
 import com.hillel.pages.FreeConsultationPage;
@@ -21,7 +22,7 @@ public class TestNgClass extends BaseTest{
     @Link("https://example.org/issue/")
     @Test(description = "Open page test", priority = 2, groups = "regression")
     public void firstTestNgTest(){
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage();
         homePage.open();
          Assert.assertEquals(9, homePage.getCommonQuestionsSize(), "Questions sizes not equal");
     }
@@ -30,7 +31,7 @@ public class TestNgClass extends BaseTest{
     @Issue("Jira111")
     @Test(priority = 1, groups = "smoke", retryAnalyzer = RetryListenerExample.class)
     public void checkCoursesNumber() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage();
         homePage.open();
         log.info("Home hillel page is opened");
         Assert.assertEquals(homePage.getCourseCategories().size(), 6, "Incorrect number of courses");
@@ -39,8 +40,8 @@ public class TestNgClass extends BaseTest{
     @Test(dataProvider = "data", dataProviderClass = DataProviderMethods.class, dependsOnMethods = "checkCoursesNumber",
     alwaysRun = true)
     public void freeConsultTest(String name, String email, String phone, String messenger, String course) {
-        HomePage homePage = new HomePage(driver);
-        FreeConsultationPage freeConsultationPage = new FreeConsultationPage(driver);
+        HomePage homePage = new HomePage();
+        FreeConsultationPage freeConsultationPage = new FreeConsultationPage();
         homePage.open();
         homePage.clickFreeConsultBtn();
         freeConsultationPage.setName(name);
@@ -49,6 +50,6 @@ public class TestNgClass extends BaseTest{
         freeConsultationPage.setMessengers(messenger);
         freeConsultationPage.clickChooseCourseBtn();
         freeConsultationPage.setCourses(course);
-        org.junit.Assert.assertTrue(freeConsultationPage.getUserName().isDisplayed());
+        Assert.assertTrue(freeConsultationPage.getUserName().isDisplayed());
     }
 }

@@ -12,7 +12,7 @@ public class DeleteMethodTest extends BaseApiTest{
         RestAssured
                 .given()
                 .when()
-                .delete("/1")
+                .delete("/101")
                 .then()
                 .statusCode(204);
     }

@@ -41,8 +41,8 @@ public class JunitTest extends BaseTest{
 
     @Test
     public void freeConsultTest() {
-        HomePage homePage = new HomePage(driver);
-        FreeConsultationPage freeConsultationPage = new FreeConsultationPage(driver);
+        HomePage homePage = new HomePage();
+        FreeConsultationPage freeConsultationPage = new FreeConsultationPage();
         homePage.open();
         homePage.clickFreeConsultBtn();
         freeConsultationPage.setName(name);
@@ -57,7 +57,7 @@ public class JunitTest extends BaseTest{
 
     @Test
     public void firstJunitTest() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage();
         homePage.open();
         // Assert.assertEquals(9, homePage.getCommonQuestionsSize(), "Questions sizes not equal");
     }

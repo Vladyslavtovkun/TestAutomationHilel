@@ -18,7 +18,7 @@ public class PostMethodTest extends BaseApiTest {
         courses.add("C++");
 
         StudentPojo studentPojo = new StudentPojo();
-        studentPojo.setFirstName("Borys");
+        studentPojo.setFirstName("Borys1");
         studentPojo.setLastName("Borysov");
         studentPojo.setEmail("borys@gmail.com");
         studentPojo.setProgramme("ComputerScience");

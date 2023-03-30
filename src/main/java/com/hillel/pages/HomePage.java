@@ -1,5 +1,9 @@
 package com.hillel.pages;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.hillel.util.ConfigProvider;
 import io.qameta.allure.Step;
 import lombok.Getter;
@@ -12,36 +16,26 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
 import static com.hillel.util.WaitUtils.waitUntilElementIsClickable;
 import static com.hillel.util.WaitUtils.waitUntilElementIsVisible;
 
 public class HomePage extends BasePage{
 
-    @FindBy(xpath = "//div[@class='section-content']")
-    private String title;
-
-    @FindBy(xpath = "//a[@href='https://ithillel.ua/courses/programming']")
-    private WebElement programmingBtn;
-
-    @FindBy(xpath = "//ul[@id='accordion-faq']/li")
-    private List<WebElement> commonQuestions;
+    private SelenideElement title = $x("//div[@class='section-content']");
+    private SelenideElement programmingBtn = $x("//a[@href='https://ithillel.ua/courses/programming']");
+    private ElementsCollection commonQuestions = $$x("//ul[@id='accordion-faq']/li");
 
     @Getter
-    @FindBy(xpath = "//button[@id='btn-consultation-hero']")
-    private WebElement freeConsultBtn;
+    private SelenideElement freeConsultBtn = $x("//button[@id='btn-consultation-hero']");
 
-    @FindBy(xpath = "//div[@class='course-cat-bar_body']/p[@class='course-cat-bar_label']")
-    private List<WebElement> courseCategories;
-
-    public HomePage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
+    private ElementsCollection courseCategories = $$x("//div[@class='course-cat-bar_body']/p[@class='course-cat-bar_label']");
 
     @Step("Open hillel base page")
     @Override
     public void open() {
-        super.driver.get(ConfigProvider.BASE_URL);
+        Selenide.open(ConfigProvider.BASE_URL);
         ensureOpened();
     }
 
@@ -52,7 +46,8 @@ public class HomePage extends BasePage{
     }
 
     public void clickProgrammingCourseBtn() {
-        waitUntilElementIsClickable(driver, programmingBtn);
+        programmingBtn.should(Condition.visible);
+       // waitUntilElementIsClickable(driver, programmingBtn);
         programmingBtn.click();
     }
 
@@ -61,7 +56,8 @@ public class HomePage extends BasePage{
     }
 
     public void clickFreeConsultBtn() {
-        waitUntilElementIsClickable(driver, freeConsultBtn);
+       // waitUntilElementIsClickable(driver, freeConsultBtn);
+        freeConsultBtn.should(Condition.visible);
         freeConsultBtn.click();
     }
 

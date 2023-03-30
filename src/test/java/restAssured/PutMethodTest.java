@@ -42,19 +42,19 @@ public class PutMethodTest extends BaseApiTest {
         courses.add("C++");
 
         StudentPojo studentPojo = new StudentPojo();
-//        studentPojo.setFirstName("Borys");
-//        studentPojo.setLastName("Borysov");
+        studentPojo.setFirstName("Borys");
+        studentPojo.setLastName("Borysov");
         studentPojo.setEmail("borys2023@gmail.com.ua");
-//        studentPojo.setProgramme("ComputerScience");
-//        studentPojo.setCourses(courses);
+        studentPojo.setProgramme("ComputerScience1");
+        studentPojo.setCourses(courses);
 
         RestAssured
                 .given()
                 .contentType(ContentType.JSON)
                 .when()
                 .body(studentPojo)
-                .patch("/55")
+                .put("/101")
                 .then()
-                .statusCode(201);
+                .statusCode(200);
     }
 }

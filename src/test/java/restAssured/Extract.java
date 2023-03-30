@@ -17,10 +17,10 @@ public class Extract {
 
     @BeforeAll
     public static void initialize() {
-        baseURI = ConfigProvider.BASE_URL;
+        baseURI = ConfigProvider.BASE_API_URL;
         port = Integer.parseInt(ConfigProvider.PORT);
         basePath = ConfigProvider.PATH;
-        jsonResponse = given().when().get("/list").asString();
+        jsonResponse = given().when().get("/1").asString();
     }
 
     @Test

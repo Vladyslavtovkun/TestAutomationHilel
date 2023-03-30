@@ -18,6 +18,8 @@ public final class ConfigProvider {
     public static final String PORT = prop.getProperty("port");
     public static final String PATH = prop.getProperty("path");
 
+    public static final String REMOTE_ADDRESS = prop.getProperty("selenium-hub.url");
+
     private ConfigProvider(){}
 
     private static Properties initProperties() {

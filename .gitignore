@@ -22,3 +22,17 @@ target/
 .sts4-cache
 
 .idea/
+
+*.class
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+out/
+.idea_modules/
+
+.gradle
+.allure
+/build

@@ -1,5 +1,6 @@
 package com.hillel.core.driver;
 
+import com.codeborne.selenide.Configuration;
 import com.hillel.core.Browsers;
 import com.hillel.util.ConfigProvider;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,10 +10,20 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.codeborne.selenide.Configuration.*;
+
 public class WebDriverFactory {
 
     private static final String BROWSER = System.getProperty("browser");
     private static WebDriver driver;
+
+    public static void setupDriver() {
+        baseUrl = ConfigProvider.BASE_URL;
+        browser = ConfigProvider.BROWSER;
+        headless = false;
+        timeout = 10000;
+        remote = ConfigProvider.REMOTE_ADDRESS;
+    }
 
     public static WebDriver getDriver() {
         String browserType = BROWSER != null ? BROWSER : ConfigProvider.BROWSER;
